@@ -81,3 +81,5 @@ def get_facial_features_from_capture(capture):
 	eyes = detect_eyes(eye_cascade, image)
 
 	facial_features_list = create_facial_features(faces, eyes)
+
+	return facial_features_list, image

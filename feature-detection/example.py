@@ -3,7 +3,7 @@ import eye
 
 # example
 capture = cv2.VideoCapture(0)
-facial_features_list = eye.get_facial_features_from_capture(capture, image)
+facial_features_list, image = eye.get_facial_features_from_capture(capture)
 
 if facial_features_list:
 	features = facial_features_list[0]
