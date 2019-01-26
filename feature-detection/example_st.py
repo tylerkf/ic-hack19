@@ -26,5 +26,5 @@ else:
 	print("no features found!")
 
 
-plt.imshow(image)
+plt.imshow(roi_left_eye)
 plt.show()
