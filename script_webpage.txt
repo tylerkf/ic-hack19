@@ -1,0 +1,58 @@
+#TODO: 
+x	Make Javascript check values from a text file that is updated by Python
+x	Define some conditions for the events
+
+
+function goBack() {
+  window.history.back() // goes to last page in history
+}
+
+function goForward() {
+  window.history.forward() // goes to next page in history
+}
+
+function scrollLeft() {
+  window.scrollBy(-100, 0); // Scroll 100px left
+}
+
+function scrollRight() {
+  window.scrollBy(100, 0); // Scroll 100px right
+}
+
+function scrollDown() {
+  window.history.back(); // Scroll 100px down
+}
+
+function scrollUp() {
+  window.scrollBy(0, -100); // Scroll 100px up
+}
+
+
+function checking_features() {
+	if (**** condition){
+	scrollLeft();
+	}
+
+	if (**** condition){
+	scrollRight();
+	}
+	
+	if (**** condition){
+	scrollUp();
+	}
+
+	if (**** condition){
+	scrollDown();
+	}
+
+	if (**** condition){
+	goBack();
+	}
+
+	if (**** condition){
+	goForward();
+	}
+}
+
+
+window.setInterval(checking_features, 500); // Checks the presence of features every 500 ms
