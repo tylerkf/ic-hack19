@@ -14,7 +14,7 @@ import detect_blinks as blinky
 from PIL import Image
 
 # Open image file
-image = Image.open('image.png')
+image = Image.open('../server/image.png')
 
 # construct the argument parser and parse the arguments
 ap = argparse.ArgumentParser()

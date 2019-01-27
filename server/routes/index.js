@@ -69,7 +69,7 @@ router.post('/image', function(req, res, next) {
 
 async function runPython(callback) {
 	console.log("running python");
-	var process = spawn("python",["test.py"]);
+	var process = spawn("python",["feature-detection/main_extracting_all_features.py"]);
 	var output = "";
 	process.stdout.on("data", function(chunk) {
 		callback(chunk.toString());
