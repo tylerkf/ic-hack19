@@ -1,3 +1,4 @@
+# run: python example_st.py --shape-predictor shape_predictor_68_face_landmarks.dat
 import cv2
 import matplotlib.pyplot as plt
 import ffdet_st as ffdet
