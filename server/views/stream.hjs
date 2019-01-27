@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ username }}</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Cyclops Stream Service</h1>
+    <p>Welcome {{ username }}</p>
+    <div>
+  		<video id="video">Video stream not available.</video>
+		</div>
+		<script>
+			const URL = "http://cyclopsx.duckdns.org/image"
+			const CAPTURE_INTERVAL = 5000;
+
+			var width = 0;
+			var height = 0;
+
+			var video = null;
+			var canvas = null;
+			var interval = null;
+			var streaming = false;
+
+			function startup() {
+			  video = document.getElementById("video");
+			  canvas = document.createElement("canvas");
+
+			  navigator.mediaDevices.getUserMedia({ video: true, audio: false })
+			  .then(function(stream) {
+			      video.srcObject = stream;
+			      video.play();
+			  })
+			  .catch(function(err) {
+			      console.log("An error occurred! " + err);
+			  });
+
+			  video.addEventListener('canplay', function(ev){
+			    if (!streaming) {
+			      width = video.videoWidth;
+			      height = video.videoHeight;
+			      canvas.setAttribute('width', width);
+			      canvas.setAttribute('height', height);
+			      streaming = true;
+			      console.log("can stream");
+			    }
+			  }, false);
+
+			  interval = window.setInterval(runFeatureCapture, CAPTURE_INTERVAL);
+			}
+
+			window.onload = startup;
+
+			function runFeatureCapture() {
+			  var data = captureWebcam();
+			  if (data != null) {
+			    sendImage(data);
+			    console.log("success!")
+			  }
+			}
+
+			function captureWebcam() {
+			  var context = canvas.getContext('2d');
+			  var data = null;
+
+			  if (streaming) {
+			    context.drawImage(video, 0, 0, width, height);
+			  
+			    data = canvas.toDataURL('image/png').replace(/^data:image\/(png|jpg);base64,/, "");
+			    console.log("got data");
+			  }
+
+			  return data;
+			}
+
+			function sendImage(imageData) {
+			    console.log("Uploading...");
+			    console.log(imageData);
+
+			    var formData = {};
+			    formData["uid"] = "123abc";
+			    formData["image"] = imageData;
+
+			    formString = JSON.stringify(formData);
+			    console.log(formString);
+
+			    fetch(URL, {
+			      method: "POST",
+			      headers: {
+			            "Content-Type": "application/json"
+			        },
+			      body: formString
+			    }).then(function(response) {
+			      return response.json();
+			    });
+			}
+		</script>
+  </body>
+</html>
