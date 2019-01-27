@@ -11,11 +11,10 @@ import argparse
 import imutils
 import dlib
 import detect_blinks as blinky
+from PIL import Image
 
 # Open image file
-f = open('image.png', 'r+')
-image = f.read()
-f.close()
+image = Image.open('image.png')
 
 # construct the argument parser and parse the arguments
 ap = argparse.ArgumentParser()
@@ -58,9 +57,9 @@ pupil_value = blinky.pupil_detector(grayscale, eye_landmarks)
 # wink_value = -1,0,1 corresponding to winking left eye, not winking or winking right eye
 # pupil_value = -1,0,1 corresponding to pointing to the left, neutral or point to the right
 inclination = 0
-if angle > 20:
+if angle > 10:
 	inclination = -1
-elif angle < -20:
+elif angle < -10:
 	inclination = 1
 
 feature_dic = {"head_inclination": inclination, "winking": wink_value, \

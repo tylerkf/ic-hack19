@@ -118,8 +118,6 @@ def createLineIterator(P1, P2, img):
     	if image_high_cut_bin[x] == 1:
     		pupil_right = x
     		break
-
-    print(0, pupil_left, pupil_right, len(itbuffer[:,2]))
     ratio = pupil_left/(len(itbuffer[:,2])-pupil_right)
 
     return itbuffer, ratio
