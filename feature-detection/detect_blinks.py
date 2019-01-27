@@ -22,8 +22,7 @@ def eye_aspect_ratio(eye):
 
 def wink_detector(image):
 	# Convert image to grayscale
-	frame = imutils.resize(image, width=450)
-	gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+	gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 	print(gray.shape, type(gray[0][1]))
 	# construct the argument parse and parse the arguments
 	ap = argparse.ArgumentParser()
