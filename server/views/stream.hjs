@@ -78,7 +78,7 @@
 			    console.log(imageData);
 
 			    var formData = {};
-			    formData["uid"] = "123abc";
+			    formData["uid"] = "{{ uid }}";
 			    formData["image"] = imageData;
 
 			    formString = JSON.stringify(formData);
