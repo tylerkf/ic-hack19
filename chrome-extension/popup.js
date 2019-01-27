@@ -6,9 +6,7 @@ function startup() {
   var runningButton = document.getElementById("runningButton");
 
   var port = chrome.extension.connect({
-
-      name: "Background Communication"
-
+      name: "Popup Communication"
     });
 
   port.postMessage("status");

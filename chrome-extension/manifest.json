@@ -18,7 +18,13 @@
     "default_title": "icon"
   },
   "background": {
-    "scripts": ["background.js"],
+    "scripts": ["socket.io.slim.js", "background.js"],
     "persistent": false
-  }
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*"],
+      "js": ["content.js"]
+    }
+  ]
 }

@@ -47,4 +47,10 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+var setio = function(http) {
+  indexRouter.setio(app);
+}
+
+app.setio = setio;
+
 module.exports = app;
