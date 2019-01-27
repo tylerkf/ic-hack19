@@ -8,13 +8,16 @@ import detect_blinks as blinky
 capture = cv2.VideoCapture(0)
 facial_features_list, image = ffdet.get_facial_features_from_capture(capture)
 
-wink_value = blinky.wink_detector(image)
+wink_value, convexhull = blinky.wink_detector(image)
 if wink_value == -1:
-	print("Ah, you winked with your left eye")
+	print("Ah, you winked with your left eye!")
 elif wink_value == 1:
-	print("Ah, you winked with your right eye")
+	print("Ah, you winked with your right eye!")
 else:
 	print("You didn't wink!")
+cv2.drawContours(image, [convexhull[0]], -1, (0, 255, 0), 1)
+cv2.drawContours(image, [convexhull[1]], -1, (0, 255, 0), 1)
+cv2.imshow("Image", image)
 
 if facial_features_list:
 	features = facial_features_list[0]

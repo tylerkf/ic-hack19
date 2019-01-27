@@ -42,17 +42,23 @@ def wink_detector(image):
 	# Get ROI for left and right eyes
 	leftEye = shape[lStart:lEnd]
 	rightEye = shape[rStart:rEnd]
+	# Compute and visualize convex hull
+	leftEyeHull = cv2.convexHull(leftEye)
+	rightEyeHull = cv2.convexHull(rightEye)
+
 	# Compute eye-aspect-ratio for both eyes
 	leftEAR = eye_aspect_ratio(leftEye)
 	rightEAR = eye_aspect_ratio(rightEye)
 	# Set threshold for eye-aspect-ratio
-	EYE_AR_THRESH = 0.25
+	EYE_AR_THRESH = 0.24
+	print("Left EAR:",str(leftEAR))
+	print("Right EAR:",str(rightEAR))
 	# Blink with left eye: -1, Blink with right eye: +1, Otherwise return 0
 	if leftEAR < EYE_AR_THRESH and rightEAR > EYE_AR_THRESH:
-		return -1
+		return -1, [leftEyeHull,rightEyeHull]
 	elif leftEAR > EYE_AR_THRESH and rightEAR < EYE_AR_THRESH:
-		return 1
+		return 1, [leftEyeHull,rightEyeHull]
 	else:
-		return 0
+		return 0, [leftEyeHull,rightEyeHull]
 
 
