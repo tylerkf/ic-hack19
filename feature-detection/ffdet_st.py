@@ -18,7 +18,7 @@ def detect_faces(face_cascade, image):
     minSize=(30, 30),
     flags = cv2.CASCADE_SCALE_IMAGE
 	)
-
+	faces = np.array(faces)
 	face_size = faces.shape[0]
 	face_vec = []
 	for (x,y,w,h) in faces:
