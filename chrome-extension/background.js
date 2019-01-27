@@ -49,6 +49,11 @@ function startSockets() {
     console.log(msg);
     try {
       lastAction = JSON.parse(msg);
+      if (lastAction["head_inclination"] >= 10) {
+        tab();
+      } else if (winking == 1) {
+        click_it();
+      }
     } catch(e) {
       console.log(e);
     }
@@ -63,7 +68,7 @@ function startSockets() {
   });
 }
 
-function runit() {
+function tab() {
   chrome.tabs.query({active: true}, function(tabs){
     for (tab in tabs) {
       chrome.tabs.sendMessage(tabs[0].id, {action: "tab_to_next_focus"}, function(response) {}); 
@@ -71,7 +76,7 @@ function runit() {
   });
 }
 
-function runit2() {
+function click_it() {
   chrome.tabs.query({active: true}, function(tabs){
     for (tab in tabs) {
       chrome.tabs.sendMessage(tabs[0].id, {action: "click_active"}, function(response) {}); 
