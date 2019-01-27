@@ -23,7 +23,6 @@ def eye_aspect_ratio(eye):
 def wink_detector(image):
 	# Convert image to grayscale
 	gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-	print(gray.shape, type(gray[0][1]))
 	# construct the argument parse and parse the arguments
 	ap = argparse.ArgumentParser()
 	ap.add_argument("-p", "--shape-predictor", required=True,
@@ -50,8 +49,8 @@ def wink_detector(image):
 	rightEAR = eye_aspect_ratio(rightEye)
 	# Set threshold for eye-aspect-ratio
 	EYE_AR_THRESH = 0.24
-	print("Left EAR:",str(leftEAR))
-	print("Right EAR:",str(rightEAR))
+	#print("Left EAR:",str(leftEAR))
+	#print("Right EAR:",str(rightEAR))
 	# Blink with left eye: -1, Blink with right eye: +1, Otherwise return 0
 	if leftEAR < EYE_AR_THRESH and rightEAR > EYE_AR_THRESH:
 		return -1, [leftEyeHull,rightEyeHull]
