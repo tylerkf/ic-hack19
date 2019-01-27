@@ -30,7 +30,7 @@ def detect_eyes(eye_cascade, image):
     minSize=(30, 30),
     flags = cv2.CASCADE_SCALE_IMAGE
 	)
-
+	
 	return eyes
 
 ## helper functions

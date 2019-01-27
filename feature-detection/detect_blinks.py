@@ -150,8 +150,8 @@ def wink_detector(image):
 	rightEAR = eye_aspect_ratio(rightEye)
 	# Set threshold for eye-aspect-ratio
 	EYE_AR_THRESH = 0.24
-	print("Left EAR:",str(leftEAR))
-	print("Right EAR:",str(rightEAR))
+	#print("Left EAR:",str(leftEAR))
+	#print("Right EAR:",str(rightEAR))
 	# Blink with left eye: -1, Blink with right eye: +1, Otherwise return 0
 	if (leftEAR < EYE_AR_THRESH) & (rightEAR > EYE_AR_THRESH):
 		return -1, [leftEye,rightEye]
