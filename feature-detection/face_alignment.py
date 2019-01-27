@@ -72,6 +72,5 @@ class FaceAligner:
         output = cv2.warpAffine(image, M, (w, h),
             flags=cv2.INTER_CUBIC)
 
- 
         # return the aligned face
         return output, angle

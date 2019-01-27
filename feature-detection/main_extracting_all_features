@@ -1,0 +1,9 @@
+import cv2
+import matplotlib.pyplot as plt
+import ffdet_st as ffdet
+import detect_blinks as blinky
+
+
+# first align and give angle
+# second check for blinks
+# third check pupil position
