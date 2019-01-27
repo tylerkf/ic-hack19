@@ -1,0 +1,19 @@
+function goBack() {
+  window.history.back() // goes to last page
+}
+
+function scrollLeft() {
+  window.scrollBy(-100, 0); // Scroll 100px left
+}
+
+function scrollRight() {
+  window.scrollBy(100, 0); // Scroll 100px right
+}
+
+function scrollDown() {
+  window.history.back(); // Scroll 100px down
+}
+
+function scrollUp() {
+  window.scrollBy(0, -100); // Scroll 100px up
+}
