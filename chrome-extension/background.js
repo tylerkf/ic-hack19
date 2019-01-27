@@ -67,12 +67,16 @@ function startSockets() {
   socket = io(SOCKET_URL);
 
   socket.on('action', function(msg) {
-    console.log(msg);
     try {
-      lastAction = JSON.parse(msg);
-      if (lastAction["head_inclination"] >= 10) {
-        tab();
-      } else if (winking == 1) {
+      json_str = msg.replace("'", '"');
+      json_str = json_str.replace(/'/g, '"');
+      console.log(json_str);
+      lastAction = JSON.parse(json_str);
+      if (lastAction["head_inclination"] == 1) {
+        tab_it();
+      }
+
+      if (lastAction["winking"] == 1) {
         click_it();
       }
     } catch(e) {
@@ -89,7 +93,7 @@ function startSockets() {
   });
 }
 
-function tab() {
+function tab_it() {
   chrome.tabs.query({active: true}, function(tabs){
     for (tab in tabs) {
       chrome.tabs.sendMessage(tabs[0].id, {action: "tab_to_next_focus"}, function(response) {});
