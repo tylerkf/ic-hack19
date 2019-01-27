@@ -1,5 +1,14 @@
+#TODO: 
+x	Make Javascript check values from a text file that is updated by Python
+x	Define some conditions for the events
+
+
 function goBack() {
-  window.history.back() // goes to last page
+  window.history.back() // goes to last page in history
+}
+
+function goForward() {
+  window.history.forward() // goes to next page in history
 }
 
 function scrollLeft() {
@@ -38,6 +47,10 @@ function checking_features() {
 
 	if (**** condition){
 	goBack();
+	}
+
+	if (**** condition){
+	goForward();
 	}
 }
 
