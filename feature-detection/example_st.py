@@ -18,7 +18,7 @@ else:
 cv2.drawContours(image, [convexhull[0]], -1, (0, 255, 0), 1)
 cv2.drawContours(image, [convexhull[1]], -1, (0, 255, 0), 1)
 cv2.imshow("Image", image)
-
+0
 if facial_features_list:
 	features = facial_features_list[0]
 	image = ffdet.draw_features(image, [features["face"]], (255, 0, 0))
