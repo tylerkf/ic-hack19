@@ -17,3 +17,29 @@ function scrollDown() {
 function scrollUp() {
   window.scrollBy(0, -100); // Scroll 100px up
 }
+
+
+function checking_features() {
+	if (**** condition){
+	scrollLeft();
+	}
+
+	if (**** condition){
+	scrollRight();
+	}
+	
+	if (**** condition){
+	scrollUp();
+	}
+
+	if (**** condition){
+	scrollDown();
+	}
+
+	if (**** condition){
+	goBack();
+	}
+}
+
+
+window.setInterval(checking_features, 500); // Checks the presence of features every 500 ms
