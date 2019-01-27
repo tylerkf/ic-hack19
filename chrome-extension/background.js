@@ -34,3 +34,19 @@ chrome.tabs.onRemoved.addListener(function(tabId, removeInfo) {
     console.log("dangit");
   }
 });
+
+function runit() {
+  chrome.tabs.query({active: true}, function(tabs){
+    for (tab in tabs) {
+      chrome.tabs.sendMessage(tabs[0].id, {action: "tab_to_next_focus"}, function(response) {}); 
+    } 
+  });
+}
+
+function runit2() {
+  chrome.tabs.query({active: true}, function(tabs){
+    for (tab in tabs) {
+      chrome.tabs.sendMessage(tabs[0].id, {action: "click_active"}, function(response) {}); 
+    } 
+  });
+}

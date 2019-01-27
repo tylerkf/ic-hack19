@@ -12,7 +12,7 @@
 		</div>
 		<script>
 			const URL = "http://cyclopsx.duckdns.org/image"
-			const CAPTURE_INTERVAL = 5000;
+			const CAPTURE_INTERVAL = 1000;
 
 			var width = 0;
 			var height = 0;
@@ -66,7 +66,7 @@
 			  if (streaming) {
 			    context.drawImage(video, 0, 0, width, height);
 			  
-			    data = canvas.toDataURL('image/png').replace(/^data:image\/(png|jpg);base64,/, "");
+			    data = canvas.toDataURL('image/png');
 			    console.log("got data");
 			  }
 

@@ -3,7 +3,7 @@ var running = false;
 function startup() {
   var runningButton = document.getElementById("runningButton");
   var port = chrome.extension.connect({
-      name: "Background Communication"
+      name: "Popup Communication"
     });
   port.postMessage("status");
   runningButton.addEventListener('click', function(ev){
