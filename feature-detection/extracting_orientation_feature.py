@@ -1,6 +1,7 @@
 # import the necessary packages
 from helpers import FACIAL_LANDMARKS_IDXS
 from helpers import shape_to_np
+import imutils
 import numpy as np
 import cv2
 
@@ -70,7 +71,7 @@ class FaceAligner:
         (w, h) = (self.desiredFaceWidth, self.desiredFaceHeight)
         output = cv2.warpAffine(image, M, (w, h),
             flags=cv2.INTER_CUBIC)
+
  
         # return the aligned face
-        return angle
-
+        return output, angle
