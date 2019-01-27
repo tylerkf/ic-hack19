@@ -57,9 +57,9 @@ pupil_value = blinky.pupil_detector(grayscale, eye_landmarks)
 # wink_value = -1,0,1 corresponding to winking left eye, not winking or winking right eye
 # pupil_value = -1,0,1 corresponding to pointing to the left, neutral or point to the right
 inclination = 0
-if angle > 20:
+if angle > 10:
 	inclination = -1
-elif angle < -20:
+elif angle < -10:
 	inclination = 1
 
 feature_dic = {"head_inclination": inclination, "winking": wink_value, \

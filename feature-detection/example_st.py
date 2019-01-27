@@ -20,11 +20,11 @@ gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 blinky.pupil_detector(gray_image,eye_landmarks)
 
 # Compute and visualize convex hull
-leftEyeHull = cv2.convexHull(eye_landmarks[0])
-rightEyeHull = cv2.convexHull(eye_landmarks[1])
-cv2.drawContours(image, leftEyeHull, -1, (0, 255, 0), 1)
-cv2.drawContours(image, rightEyeHull, -1, (0, 255, 0), 1)
-cv2.imshow("Image", image)
+# leftEyeHull = cv2.convexHull(eye_landmarks[0])
+# rightEyeHull = cv2.convexHull(eye_landmarks[1])
+# cv2.drawContours(image, leftEyeHull, -1, (0, 255, 0), 1)
+# cv2.drawContours(image, rightEyeHull, -1, (0, 255, 0), 1)
+# cv2.imshow("Image", image)
 
 plt.imshow(image)
 plt.show()
