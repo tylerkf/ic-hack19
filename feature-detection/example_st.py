@@ -1,11 +1,19 @@
 import cv2
 import matplotlib.pyplot as plt
-import ffdet
-from detect_blinks import eye_aspect_ratio as EAR
+import ffdet_st as ffdet
+import detect_blinks as blinky
 
 # example
 capture = cv2.VideoCapture(0)
 facial_features_list, image = ffdet.get_facial_features_from_capture(capture)
+
+wink_value = blinky.wink_detector(image)
+if wink_value == -1:
+	print("Ah, you winked with your left eye")
+elif wink_value == 1:
+	print("Ah, you winked with your right eye")
+else:
+	print("You didn't wink!")
 
 if facial_features_list:
 	features = facial_features_list[0]
@@ -15,28 +23,21 @@ if facial_features_list:
 	face_xy = features["face"]
 	left_eye_xy = features["left_eye"]
 	right_eye_xy = features["right_eye"]
-	face = image[face_xy[1]:face_xy[1]+face_xy[3], \
+	face_roi = image[face_xy[1]:face_xy[1]+face_xy[3], \
 				face_xy[0]:face_xy[0]+face_xy[2]]
-	left_eye = image[left_eye_xy[1]:left_eye_xy[1]+left_eye_xy[3], \
+	left_eye_roi = image[left_eye_xy[1]:left_eye_xy[1]+left_eye_xy[3], \
 				left_eye_xy[0]:left_eye_xy[0]+left_eye_xy[2]]
-	right_eye = image[right_eye_xy[1]:right_eye_xy[1]+right_eye_xy[3],\
+	right_eye_roi = image[right_eye_xy[1]:right_eye_xy[1]+right_eye_xy[3],\
 			right_eye_xy[0]:right_eye_xy[0]+right_eye_xy[2]]
-	cv2.imshow("FACE", face)
-	cv2.imshow("LEFT_EYE", left_eye)
-	cv2.imshow("RIGHT_EYE", right_eye)
+	cv2.imshow("FACE", face_roi)
+	cv2.imshow("LEFT_EYE", left_eye_roi)
+	cv2.imshow("RIGHT_EYE", right_eye_roi)
 else:
 	print("no features found!")
 
 plt.imshow(image)
 plt.show()
 
-EYE_AR_THRESH = 0.3
-
-left_EAR = EAR(left_eye)
-right_EAR = EAR(right_eye)
-
-print(left_EAR)
-print(right_EAR)
 
 # if left_EAR < EYE_AR_THRESH and right_EAR > EYE_AR_THRESH:
 # 	return -1
