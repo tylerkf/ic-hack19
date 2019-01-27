@@ -17,10 +17,11 @@ from PIL import Image
 image = Image.open('../server/image.png')
 
 # construct the argument parser and parse the arguments
-ap = argparse.ArgumentParser()
-ap.add_argument("-p", "--shape-predictor", required=True,
-	help="path to facial landmark predictor")
-args = vars(ap.parse_args())
+#ap = argparse.ArgumentParser()
+#ap.add_argument("-p", "--shape-predictor", required=True,
+#	help="path to facial landmark predictor")
+#args = vars(ap.parse_args())
+args = ["shape_predictor_68_face_landmarks.dat"]
 
 # initialize dlib's face detector (HOG-based) and then create
 # the facial landmark predictor
