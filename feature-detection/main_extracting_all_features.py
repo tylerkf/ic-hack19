@@ -13,8 +13,9 @@ import dlib
 import detect_blinks as blinky
 from PIL import Image
 
-# Open image file
+# Open image files
 image = Image.open('image.png')
+image = np.asarray(image)
 
 # construct the argument parser and parse the arguments
 ap = argparse.ArgumentParser()
@@ -28,8 +29,8 @@ detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor(args["shape_predictor"])
 
 # rough pictures
-capture = cv2.VideoCapture(0)
-facial_features_list, image = ffdet.get_facial_features_from_capture(capture)
+#capture = cv2.VideoCapture(0)
+#facial_features_list, image = ffdet.get_facial_features_from_capture(capture)
 
 # constructing palign class and associated boxes
 face_aligner = FaceAligner(predictor)

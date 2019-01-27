@@ -26,7 +26,7 @@ blinky.pupil_detector(gray_image,eye_landmarks)
 # cv2.drawContours(image, rightEyeHull, -1, (0, 255, 0), 1)
 # cv2.imshow("Image", image)
 
-plt.imshow(image)
+plt.imshow()
 plt.show()
 
 
