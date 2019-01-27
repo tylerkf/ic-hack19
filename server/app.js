@@ -11,16 +11,15 @@ var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'hjs');
 
 app.use(logger('dev'));
-app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.json({limit: '10mb'}));
 app.use(bodyParser.urlencoded({
-	limit: '50mb',
+	limit: '10mb',
   extended: true
 }));
 
