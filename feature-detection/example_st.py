@@ -26,7 +26,7 @@ cv2.drawContours(image, leftEyeHull, -1, (0, 255, 0), 1)
 cv2.drawContours(image, rightEyeHull, -1, (0, 255, 0), 1)
 cv2.imshow("Image", image)
 
-plt.imshow(gray_image)
+plt.imshow(image)
 plt.show()
 
 

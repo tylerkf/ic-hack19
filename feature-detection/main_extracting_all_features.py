@@ -11,11 +11,10 @@ import argparse
 import imutils
 import dlib
 import detect_blinks as blinky
+from PIL import Image
 
 # Open image file
-f = open('image.png', 'r+')
-image = f.read()
-f.close()
+image = Image.open('image.png')
 
 # construct the argument parser and parse the arguments
 ap = argparse.ArgumentParser()
