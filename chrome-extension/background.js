@@ -70,14 +70,15 @@ function startSockets() {
     try {
       json_str = msg.replace("'", '"');
       json_str = json_str.replace(/'/g, '"');
-      console.log(json_str);
       lastAction = JSON.parse(json_str);
+      console.log(json_str);
+
       if (lastAction["head_inclination"] == 1) {
         tab_it();
-      }
-
-      if (lastAction["winking"] == 1) {
+      } else if (lastAction["winking"] == 1) {
         click_it();
+      } else if (lastAction["winking"] == -1 || lastAction["head_inclination"] == -1) {
+        back_it();
       }
     } catch(e) {
       console.log(e);
@@ -94,17 +95,41 @@ function startSockets() {
 }
 
 function tab_it() {
+  console.log("tab");
   chrome.tabs.query({active: true}, function(tabs){
-    for (tab in tabs) {
-      chrome.tabs.sendMessage(tabs[0].id, {action: "tab_to_next_focus"}, function(response) {});
+    console.log(tabs.length);
+    for (var i=0; i < tabs.length; i++) {
+      if (tabs[i].id === undefined) {
+        continue
+      }
+      chrome.tabs.sendMessage(tabs[i].id, {action: "tab_to_next_focus"}, function(response) {});
     }
   });
 }
 
 function click_it() {
+  console.log("click");
   chrome.tabs.query({active: true}, function(tabs){
-    for (tab in tabs) {
-      chrome.tabs.sendMessage(tabs[0].id, {action: "click_active"}, function(response) {});
+    console.log(tabs.length);
+    for (var i=0; i < tabs.length; i++) {
+      if (tabs[i].id === undefined) {
+        continue
+      }
+      chrome.tabs.sendMessage(tabs[i].id, {action: "click_active"}, function(response) {});
+    }
+  });
+}
+
+function back_it() {
+  console.log("back");
+  chrome.tabs.query({active: true}, function(tabs){
+    console.log(tabs.length);
+    for (var i=0; i < tabs.length; i++) {
+      if (tabs[i].id === undefined) {
+        continue
+      }
+      console.log("in the loop");
+      chrome.tabs.sendMessage(tabs[i].id, {action: "go_bback"}, function(response) {});
     }
   });
 }

@@ -12,7 +12,7 @@
 		</div>
 		<script>
 			const URL = "http://cyclopsx.duckdns.org/image"
-			const CAPTURE_INTERVAL = 1000;
+			const CAPTURE_INTERVAL = 500;
 
 			var width = 0;
 			var height = 0;

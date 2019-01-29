@@ -10,6 +10,11 @@ chrome.runtime.onMessage.addListener(
     } else if (request.action == "click_active") {
       console.log("clicking");
       clickActive();
+    } else if (request.action == "go_bback") {
+      console.log("backkk");
+      history.back();
+    } else {
+      console.log("odd")
     }
   });
 
@@ -60,6 +65,10 @@ function tabToNextFocus() {
       console.log("didnt find tab index");
       return;
     }
+  }
+
+  if (tabToElement[currentTabIndex] === undefined) {
+    return
   }
 
   tabToElement[currentTabIndex].focus();
